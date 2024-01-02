@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  ecommerce.api.customers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5235:80"    
+
+  ecommerce.api.orders:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5200:80"
+
+  ecommerce.api.products:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5044:80"
+
+  ecommerce.api.search:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services__Products=http://ecommerce.api.products
+      - Services__Orders=http://ecommerce.api.orders
+      - Services__Customers=http://ecommerce.api.customers
+    ports:
+      - "5160:80"   
+
+#networks:
+#  proxy_host: {}
+
+#networks:
+#  default:
+#     name: dockercompose13166445852064481949_proxy_host
+#     external: true
+
+#networks:
+#  default:
+#    external:
+#      name: service-tier
+  

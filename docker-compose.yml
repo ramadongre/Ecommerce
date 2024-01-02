@@ -1,0 +1,34 @@
+version: '3.4'
+
+#networks:
+#    network1:
+#        name: dockercompose13166445852064481949_default
+#        external: true
+  
+services:
+  ecommerce.api.customers:
+    image: ${DOCKER_REGISTRY-}ecommerceapicustomers
+    build:
+      context: .
+      dockerfile: ECommerce.API.Customers\Dockerfile
+
+  ecommerce.api.orders:
+    image: ${DOCKER_REGISTRY-}ecommerceapiorders
+    build:
+      context: .
+      dockerfile: ECommerce.API.Orders\Dockerfile
+
+
+  ecommerce.api.products:
+    image: ${DOCKER_REGISTRY-}ecommerceapiproducts
+    build:
+      context: .
+      dockerfile: ECommerce.API.Products\Dockerfile
+
+
+  ecommerce.api.search:
+    image: ${DOCKER_REGISTRY-}ecommerceapisearch
+    build:
+      context: .
+      dockerfile: ECommerce.API.Search\Dockerfile
+
